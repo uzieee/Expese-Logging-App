@@ -25,23 +25,23 @@ export function Sales({ chartSeries, sx }: SalesProps): React.JSX.Element {
 
   return (
     <Card sx={sx}>
-      <CardHeader
+      {/* <CardHeader
         action={
           <Button color="inherit" size="small" startIcon={<ArrowClockwiseIcon fontSize="var(--icon-fontSize-md)" />}>
             Sync
           </Button>
         }
         title="Sales"
-      />
+      /> */}
       <CardContent>
         <Chart height={350} options={chartOptions} series={chartSeries} type="bar" width="100%" />
       </CardContent>
       <Divider />
-      <CardActions sx={{ justifyContent: 'flex-end' }}>
+      {/* <CardActions sx={{ justifyContent: 'flex-end' }}>
         <Button color="inherit" endIcon={<ArrowRightIcon fontSize="var(--icon-fontSize-md)" />} size="small">
           Overview
         </Button>
-      </CardActions>
+      </CardActions> */}
     </Card>
   );
 }
@@ -67,7 +67,7 @@ function useChartOptions(): ApexOptions {
     xaxis: {
       axisBorder: { color: theme.palette.divider, show: true },
       axisTicks: { color: theme.palette.divider, show: true },
-      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      categories: ['Flat', 'House', 'Bills', 'Cars', 'Repairing', 'Laptop'],
       labels: { offsetY: 5, style: { colors: theme.palette.text.secondary } },
     },
     yaxis: {
