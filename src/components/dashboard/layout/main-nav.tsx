@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
-import Badge from '@mui/material/Badge';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
@@ -17,6 +16,7 @@ import { usePopover } from '@/hooks/use-popover';
 import { MobileNav } from './mobile-nav';
 import { UserPopover } from './user-popover';
 import { CalendarCheck } from '@phosphor-icons/react';
+import { Typography } from '@mui/material';
 
 export function MainNav(): React.JSX.Element {
   const [openNav, setOpenNav] = React.useState<boolean>(false);
@@ -68,13 +68,15 @@ export function MainNav(): React.JSX.Element {
                 </IconButton>
               </Badge>
             </Tooltip> */}
-            <Tooltip title="Notifications">
-              <Badge badgeContent={4} color="success" variant="dot">
-                <IconButton>
-                  <CalendarCheck />
-                </IconButton>
-              </Badge>
-            </Tooltip>
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+      <Tooltip title="Notifications">
+          <IconButton>
+            <CalendarCheck />
+          </IconButton>
+        </Tooltip>
+      <Typography sx={{ color: '#6475df' , fontWeight: 'bold' }}>January, 2024</Typography>
+     
+    </Box>
             <Avatar
               onClick={userPopover.handleOpen}
               ref={userPopover.anchorRef}
