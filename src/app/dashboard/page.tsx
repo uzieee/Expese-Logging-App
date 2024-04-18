@@ -107,7 +107,7 @@ export default function Page(): React.JSX.Element {
       <Typography variant="h4" sx={{  marginBottom: 2 }}>Expense by Categories</Typography>
           
       
-        <Traffic chartSeries={[63, 15, 22]} labels={['Rent', 'Vehicle', 'Flat']} sx={{ height: '100%' }} />
+        <Traffic chartSeries={[31, 18, 17 , 23 , 12]} labels={['Rent', 'Vehicle', 'Flat' , 'Cars' , 'Laptops']} sx={{ height: '100%' }} />
       </Grid>
       <Grid lg={12} md={6} xs={12}> 
       <Typography variant="h4" sx={{ marginTop: 5 , marginBottom: 2 }}>Recent Transactions</Typography>

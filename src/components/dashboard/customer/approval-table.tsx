@@ -20,6 +20,8 @@ function noop(): void {
   // do nothing
 }
 
+
+
 export interface ExpenseApproval {
   id: string;
   employee_name: string;
@@ -32,6 +34,7 @@ export interface ExpenseApproval {
   // transaction_date: string;
   // transaction_time:string;
 }
+
 
 interface ExpenseApprovalsTableProps {
   count?: number;
@@ -61,7 +64,7 @@ export function ExpenseApprovalsTable({
       <Box sx={{ overflowX: 'auto' , height : '500px'  }}>
         <Table sx={{ minWidth: '800px' }}>
           <TableHead >
-            <TableRow sx={{backgroundColor: 'black' }}>
+          <TableRow sx={{color: 'black !important' }}>
               {/* <TableCell padding="checkbox">
                 <Checkbox
                   checked={selectedAll}
