@@ -11,7 +11,6 @@ import { Traffic } from '@/components/dashboard/overview/traffic';
 import { Typography } from '@mui/material';
 import { CustomersTable } from '@/components/dashboard/customer/customers-table';
 import type { Customer } from '@/components/dashboard/customer/customers-table';
-import { Stack } from '@mui/system';
 
 
 export const metadata = { title: `Overview | Dashboard | ${config.site.name}` } satisfies Metadata;
@@ -94,7 +93,7 @@ export default function Page(): React.JSX.Element {
         <TotalProfit sx={{ height: '100%' }} value="$12000" />
       </Grid>
       <Grid lg={8} xs={12}>
-        <Typography variant="h4">Expense Report</Typography>
+        <Typography variant="h4" sx={{  marginBottom: 2 }}>Expense Report</Typography>
           <Sales
           chartSeries={[
             { name: 'This year', data: [ 1, 1.5, 1, 2, 2.5, 4, 3 , 3.5] },
@@ -105,21 +104,22 @@ export default function Page(): React.JSX.Element {
       </Grid>
       
       <Grid lg={4} md={6} xs={12}>
-      <Typography variant="h4">Expense by Categories</Typography>
+      <Typography variant="h4" sx={{  marginBottom: 2 }}>Expense by Categories</Typography>
           
       
         <Traffic chartSeries={[63, 15, 22]} labels={['Rent', 'Vehicle', 'Flat']} sx={{ height: '100%' }} />
       </Grid>
-      <Stack spacing={3}>
-        
+      <Grid lg={12} md={6} xs={12}> 
+      <Typography variant="h4" sx={{ marginTop: 5 , marginBottom: 2 }}>Recent Transactions</Typography>
+       
       <CustomersTable
         count={paginatedCustomers.length}
         page={page}
         rows={paginatedCustomers}
         rowsPerPage={rowsPerPage}
       />
+      </Grid>
       
-      </Stack>
       {/* <Grid lg={4} md={6} xs={12}>
         <LatestProducts
           products={[

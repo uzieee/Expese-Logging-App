@@ -1,75 +1,43 @@
 import * as React from 'react';
 import type { Metadata } from 'next';
-import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import { Plus as PlusIcon } from '@phosphor-icons/react/dist/ssr/Plus';
 
 import { config } from '@/config';
-import { CustomersTable } from '@/components/dashboard/customer/customers-table';
-import type { Customer } from '@/components/dashboard/customer/customers-table';
+import { ExpenseApproval, ExpenseApprovalsTable } from '@/components/dashboard/customer/approval-table';
 
-export const metadata = { title: `Customers | Dashboard | ${config.site.name}` } satisfies Metadata;
+export const metadata = { title: `Approval | Dashboard | ${config.site.name}` } satisfies Metadata;
 
-const customers = [
+const ExpenseApprovals = [
   
   {
-    id: 'USR-006',
-    name: 'Username',
-    avatar: '/assets/avatar-6.png',
-    email: 'Vehicle',
-    phone: '$60',
-    address: 'Rent',
-    createdAt: 'Approved', workingType: 'Full Day',
-    transaction_date: '14-02-2024' , transaction_time:'07:56PM',
+    id: 'USR-001',
+    employee_name: 'Username',
+    expense_detail: 'Vehicle ',
+    created: '14-02-2024',
+    amount: '$50',
+    action: 'Approve / Reject',
+    // createdAt: 'Approved', workingType: 'Full Day',
+    // transaction_date: '14-02-2024' , transaction_time:'07:56PM',
   },
   {
-    id: 'USR-005',
-    name: 'Username',
-    avatar: '/assets/avatar-5.png',
-    email: 'Vehicle',
-    phone: '$60',
-    address: 'Rent',
-    createdAt: 'Approved',workingType: 'Full Day', transaction_date: '14-02-2024' , transaction_time:'07:56PM', },
-
-  {
-    id: 'USR-004',
-    name: 'Username',
-    avatar: '/assets/avatar-4.png',
-    email: 'Vehicle',
-    phone: '$60',
-    address: 'Rent',
-    createdAt: 'Approved', workingType: 'Full Day',transaction_date: '14-02-2024' , transaction_time:'07:56PM', },
-  {
-    id: 'USR-003',
-    name: 'Username',
-    avatar: '/assets/avatar-3.png',
-    email: 'Vehicle',
-    phone: '$60',
-    address: 'Rent',
-    createdAt: 'Approved', workingType: 'Full Day',transaction_date: '14-02-2024' , transaction_time:'07:56PM', },
-  {
     id: 'USR-002',
-    name: 'Username',
-    avatar: '/assets/avatar-2.png',
-    email: 'Vehicle',
-    phone: '$60',
-    address: 'Rent',
-    createdAt: 'Approved', workingType: 'Full Day',transaction_date: '14-02-2024' , transaction_time:'07:56PM', },
-  {
-    id: 'USR-001',
-    name: 'Username',
-    avatar: '/assets/avatar-1.png',
-    email: 'Vehicle',
-    phone: '$60',
-    address: 'Rent',
-    createdAt: 'Approved', workingType: 'Full Day',transaction_date: '14-02-2024' , transaction_time:'07:56PM', },
-] satisfies Customer[];
+    employee_name: 'Username',
+    expense_detail: 'Vehicle ',
+    created: '14-02-2024',
+    amount: '$50',
+    action: 'Approve / Reject',
+    // createdAt: 'Approved', workingType: 'Full Day',
+    // transaction_date: '14-02-2024' , transaction_time:'07:56PM',
+  },
+  
+
+] satisfies ExpenseApproval[];
 
 export default function Page(): React.JSX.Element {
   const page = 0;
   const rowsPerPage = 10;
 
-  const paginatedCustomers = applyPagination(customers, page, rowsPerPage);
+  const paginatedCustomers = applyPagination(ExpenseApprovals, page, rowsPerPage);
 
   return (
     <Stack spacing={3}>
@@ -86,13 +54,13 @@ export default function Page(): React.JSX.Element {
           </Stack>
         </Stack> */}
         <div>
-          <Button startIcon={<PlusIcon fontSize="var(--icon-fontSize-md)" />} variant="contained">
+          {/* <Button startIcon={<PlusIcon fontSize="var(--icon-fontSize-md)" />} variant="contained">
             
-          </Button>
+          </Button> */}
         </div>
       </Stack>
       {/* <CustomersFilters /> */}
-      <CustomersTable
+      <ExpenseApprovalsTable
         count={paginatedCustomers.length}
         page={page}
         rows={paginatedCustomers}
@@ -102,6 +70,6 @@ export default function Page(): React.JSX.Element {
   );
 }
 
-function applyPagination(rows: Customer[], page: number, rowsPerPage: number): Customer[] {
+function applyPagination(rows: ExpenseApproval[], page: number, rowsPerPage: number): ExpenseApproval[] {
   return rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 }

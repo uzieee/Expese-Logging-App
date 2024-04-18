@@ -10,11 +10,11 @@ import Typography from '@mui/material/Typography';
 
 const user = {
   name: 'Usman Shafique',
-  avatar: '/assets/avatar.png',
+  avatar: '/assets/user.png',
   jobTitle: 'Senior Developer',
-  country: 'USA',
-  city: 'Los Angeles',
-  timezone: 'GTM-7',
+  country: 'Pakistan',
+  city: 'Islamabad',
+  timezone: 'GMT+5',
 } as const;
 
 export function AccountInfo(): React.JSX.Element {
