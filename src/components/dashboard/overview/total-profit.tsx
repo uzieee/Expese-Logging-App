@@ -5,7 +5,6 @@ import CardContent from '@mui/material/CardContent';
 import Stack from '@mui/material/Stack';
 import type { SxProps } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import { Receipt as ReceiptIcon } from '@phosphor-icons/react/dist/ssr/Receipt';
 
 export interface TotalProfitProps {
   sx?: SxProps;
@@ -17,15 +16,18 @@ export function TotalProfit({ value, sx }: TotalProfitProps): React.JSX.Element 
     <Card sx={sx}>
       <CardContent>
         <Stack direction="row" sx={{ alignItems: 'flex-start', justifyContent: 'space-between' }} spacing={3}>
+        <Avatar sx={{ backgroundColor: '#ffd3d9', height: '84px', width: '84px' }}>
+            {/* <ReceiptIcon fontSize="var(--icon-fontSize-lg)" /> */}
+            <img src='/assets/rejected.png' alt='Requested' height={'56px'} width={'56px'}/>
+            
+          </Avatar>
           <Stack spacing={1}>
             <Typography color="text.secondary" variant="overline">
              Rejected
             </Typography>
             <Typography variant="h4">{value}</Typography>
           </Stack>
-          <Avatar sx={{ backgroundColor: 'var(--mui-palette-primary-main)', height: '56px', width: '56px' }}>
-            <ReceiptIcon fontSize="var(--icon-fontSize-lg)" />
-          </Avatar>
+          
         </Stack>
       </CardContent>
     </Card>

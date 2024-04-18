@@ -15,7 +15,6 @@ import { usePopover } from '@/hooks/use-popover';
 
 import { MobileNav } from './mobile-nav';
 import { UserPopover } from './user-popover';
-import { CalendarCheck } from '@phosphor-icons/react';
 import { Typography } from '@mui/material';
 
 export function MainNav(): React.JSX.Element {
@@ -71,10 +70,10 @@ export function MainNav(): React.JSX.Element {
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <Tooltip title="Notifications">
           <IconButton>
-            <CalendarCheck />
+          <img src="/assets/calendar-dots.svg" alt="Calendar Dots" style={{ width: '24px', height: '24px' }} />
           </IconButton>
         </Tooltip>
-      <Typography sx={{ color: '#6475df' , fontWeight: 'bold' }}>January, 2024</Typography>
+      <Typography sx={{ color: '#6475df' , fontWeight: 'bold' }}>January, 2024</Typography> 
      
     </Box>
             <Avatar

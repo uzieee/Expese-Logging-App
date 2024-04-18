@@ -5,7 +5,6 @@ import CardContent from '@mui/material/CardContent';
 import Stack from '@mui/material/Stack';
 import type { SxProps } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import { CurrencyDollar as CurrencyDollarIcon } from '@phosphor-icons/react/dist/ssr/CurrencyDollar';
 
 export interface BudgetProps {
   // diff?: number;
@@ -22,15 +21,18 @@ export function Budget({   sx, value }: BudgetProps): React.JSX.Element {
       <CardContent>
         <Stack spacing={3}>
           <Stack direction="row" sx={{ alignItems: 'flex-start', justifyContent: 'space-between' }} spacing={3}>
+          <Avatar sx={{ backgroundColor: '#fffbd9', height: '84px', width: '84px' }}>
+              {/* <CurrencyDollarIcon fontSize="var(--icon-fontSize-lg)" /> */}
+              <img src='/assets/requested.png' alt='Requested' height={'56px'} width={'56px'}/>
+            
+            </Avatar>
             <Stack spacing={1}>
               <Typography color="text.secondary" variant="overline">
               Requested
               </Typography>
               <Typography variant="h4">{value}</Typography>
             </Stack>
-            <Avatar sx={{ backgroundColor: 'var(--mui-palette-primary-main)', height: '56px', width: '56px' }}>
-              <CurrencyDollarIcon fontSize="var(--icon-fontSize-lg)" />
-            </Avatar>
+            
           </Stack>
           {/* {diff ? (
             <Stack sx={{ alignItems: 'center' }} direction="row" spacing={2}>
