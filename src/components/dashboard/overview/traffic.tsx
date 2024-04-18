@@ -3,7 +3,6 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardHeader from '@mui/material/CardHeader';
 import Stack from '@mui/material/Stack';
 import { useTheme } from '@mui/material/styles';
 import type { SxProps } from '@mui/material/styles';

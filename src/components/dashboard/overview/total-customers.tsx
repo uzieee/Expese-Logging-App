@@ -5,20 +5,18 @@ import CardContent from '@mui/material/CardContent';
 import Stack from '@mui/material/Stack';
 import type { SxProps } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import { ArrowDown as ArrowDownIcon } from '@phosphor-icons/react/dist/ssr/ArrowDown';
-import { ArrowUp as ArrowUpIcon } from '@phosphor-icons/react/dist/ssr/ArrowUp';
 import { Users as UsersIcon } from '@phosphor-icons/react/dist/ssr/Users';
 
 export interface TotalCustomersProps {
-  diff?: number;
-  trend: 'up' | 'down';
+  //diff?: number;
+  //trend: 'up' | 'down';
   sx?: SxProps;
   value: string;
 }
 
-export function TotalCustomers({ diff, trend, sx, value }: TotalCustomersProps): React.JSX.Element {
-  const TrendIcon = trend === 'up' ? ArrowUpIcon : ArrowDownIcon;
-  const trendColor = trend === 'up' ? 'var(--mui-palette-success-main)' : 'var(--mui-palette-error-main)';
+export function TotalCustomers({   sx, value }: TotalCustomersProps): React.JSX.Element {
+  // const TrendIcon = trend === 'up' ? ArrowUpIcon : ArrowDownIcon;
+  // const trendColor = trend === 'up' ? 'var(--mui-palette-success-main)' : 'var(--mui-palette-error-main)';
 
   return (
     <Card sx={sx}>

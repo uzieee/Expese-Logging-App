@@ -10,6 +10,7 @@ import { AccountInfo } from '@/components/dashboard/account/account-info';
 
 export const metadata = { title: `Account | Dashboard | ${config.site.name}` } satisfies Metadata;
 
+
 export default function Page(): React.JSX.Element {
   return (
     <Stack spacing={3}>

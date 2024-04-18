@@ -1,10 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-import Checkbox from '@mui/material/Checkbox';
 import Divider from '@mui/material/Divider';
 import Stack from '@mui/material/Stack';
 import Table from '@mui/material/Table';
@@ -14,7 +12,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
-import dayjs from 'dayjs';
+// import dayjs from 'dayjs';
 
 import { useSelection } from '@/hooks/use-selection';
 
@@ -27,9 +25,12 @@ export interface Customer {
   avatar: string;
   name: string;
   email: string;
-  address: { city: string; state: string; country: string; street: string };
+  address: string ; 
   phone: string;
-  createdAt: Date;
+  createdAt: string;
+  workingType: string;
+  transaction_date: string;
+  transaction_time:string;
 }
 
 interface CustomersTableProps {
@@ -49,18 +50,19 @@ export function CustomersTable({
     return rows.map((customer) => customer.id);
   }, [rows]);
 
-  const { selectAll, deselectAll, selectOne, deselectOne, selected } = useSelection(rowIds);
+  //selectAll, deselectAll, selectOne, deselectOne,
+  const {  selected } = useSelection(rowIds);
 
-  const selectedSome = (selected?.size ?? 0) > 0 && (selected?.size ?? 0) < rows.length;
-  const selectedAll = rows.length > 0 && selected?.size === rows.length;
+  // const selectedSome = (selected?.size ?? 0) > 0 && (selected?.size ?? 0) < rows.length;
+  // const selectedAll = rows.length > 0 && selected?.size === rows.length;
 
   return (
-    <Card>
-      <Box sx={{ overflowX: 'auto' }}>
+    <Card >
+      <Box sx={{ overflowX: 'auto' ,  }}>
         <Table sx={{ minWidth: '800px' }}>
-          <TableHead>
-            <TableRow>
-              <TableCell padding="checkbox">
+          <TableHead >
+            <TableRow sx={{backgroundColor: 'black' }}>
+              {/* <TableCell padding="checkbox">
                 <Checkbox
                   checked={selectedAll}
                   indeterminate={selectedSome}
@@ -72,12 +74,15 @@ export function CustomersTable({
                     }
                   }}
                 />
-              </TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell>Location</TableCell>
-              <TableCell>Phone</TableCell>
-              <TableCell>Signed Up</TableCell>
+              </TableCell> */}
+              <TableCell>Employee</TableCell>
+              <TableCell>Category</TableCell>
+              <TableCell>Type</TableCell>
+              <TableCell>Expense</TableCell>
+              <TableCell>Status</TableCell>
+              <TableCell>Working Type</TableCell>
+              <TableCell>Date & Time</TableCell>
+            
             </TableRow>
           </TableHead>
           <TableBody>
@@ -86,7 +91,7 @@ export function CustomersTable({
 
               return (
                 <TableRow hover key={row.id} selected={isSelected}>
-                  <TableCell padding="checkbox">
+                  {/* <TableCell padding="checkbox">
                     <Checkbox
                       checked={isSelected}
                       onChange={(event) => {
@@ -97,19 +102,21 @@ export function CustomersTable({
                         }
                       }}
                     />
-                  </TableCell>
+                  </TableCell> */}
                   <TableCell>
                     <Stack sx={{ alignItems: 'center' }} direction="row" spacing={2}>
-                      <Avatar src={row.avatar} />
+                      {/* <Avatar src={row.avatar} /> */}
                       <Typography variant="subtitle2">{row.name}</Typography>
                     </Stack>
                   </TableCell>
                   <TableCell>{row.email}</TableCell>
                   <TableCell>
-                    {row.address.city}, {row.address.state}, {row.address.country}
+                    {row.address}
                   </TableCell>
                   <TableCell>{row.phone}</TableCell>
-                  <TableCell>{dayjs(row.createdAt).format('MMM D, YYYY')}</TableCell>
+                  <TableCell>{row.createdAt}</TableCell>
+                  <TableCell>{row.workingType}</TableCell>
+                  <TableCell>{row.transaction_date}/{row.transaction_time}</TableCell>
                 </TableRow>
               );
             })}
