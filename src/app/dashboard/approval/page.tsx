@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Stack from '@mui/material/Stack';
 
 import { config } from '@/config';
-import { ExpenseApproval, ExpenseApprovalsTable } from '@/components/dashboard/customer/approval-table';
+import { ExpenseApproval, ExpenseApprovalsTable } from '@/components/dashboard/approval/approval-table';
 
 export const metadata = { title: `Approval | Dashboard | ${config.site.name}` } satisfies Metadata;
 

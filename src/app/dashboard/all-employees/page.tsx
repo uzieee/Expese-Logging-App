@@ -5,11 +5,11 @@ import Stack from '@mui/material/Stack';
 import { Plus as PlusIcon } from '@phosphor-icons/react/dist/ssr/Plus';
 
 import { config } from '@/config';
-import { Approval, ApprovalTable } from '@/components/dashboard/integrations/integration-table';
+import { AllEmployees, AllEmployeesTable } from '@/components/dashboard/all-employees/all-employee-table';
 
-export const metadata = { title: `Approval | Dashboard | ${config.site.name}` } satisfies Metadata;
+export const metadata = { title: `All Employees | Dashboard | ${config.site.name}` } satisfies Metadata;
 
-const approvals = [
+const AllEmployeess = [
   
   {
     id: 'USR-006',
@@ -32,22 +32,22 @@ const approvals = [
     },
 
  
-] satisfies Approval[];
+] satisfies AllEmployees[];
 
 export default function Page(): React.JSX.Element {
   const page = 0;
   const rowsPerPage = 10;
 
-  const paginatedapprovals = applyPagination(approvals, page, rowsPerPage);
+  const paginatedAllEmployeess = applyPagination(AllEmployeess, page, rowsPerPage);
 
   return (
     <Stack spacing={3}>
       <Stack direction="row" spacing={3}>
          </Stack>
-      <ApprovalTable
-        count={paginatedapprovals.length}
+      <AllEmployeesTable
+        count={paginatedAllEmployeess.length}
         page={page}
-        rows={paginatedapprovals}
+        rows={paginatedAllEmployeess}
         rowsPerPage={rowsPerPage}
       />
       <div style={{ marginLeft: 'auto' }}>
@@ -61,6 +61,6 @@ export default function Page(): React.JSX.Element {
   );
 }
 
-function applyPagination(rows: Approval[], page: number, rowsPerPage: number): Approval[] {
+function applyPagination(rows: AllEmployees[], page: number, rowsPerPage: number): AllEmployees[] {
   return rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 }

@@ -17,13 +17,13 @@ import { Chart } from '@/components/core/chart';
 
 const iconMapping = { Desktop: DesktopIcon, Tablet: DeviceTabletIcon, Phone: PhoneIcon } as Record<string, Icon>;
 
-export interface TrafficProps {
+export interface ExpensebyCategoryProps {
   chartSeries: number[];
   labels: string[];
   sx?: SxProps;
 }
 
-export function Traffic({ chartSeries, labels, sx }: TrafficProps): React.JSX.Element {
+export function ExpensebyCategory({ chartSeries, labels, sx }: ExpensebyCategoryProps): React.JSX.Element {
   const chartOptions = useChartOptions(labels);
 
   return (

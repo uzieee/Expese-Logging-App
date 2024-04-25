@@ -6,12 +6,12 @@ import Stack from '@mui/material/Stack';
 import type { SxProps } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 
-export interface BudgetProps {
+export interface RequestedProps {
   sx?: SxProps;
   value: string;
 }
 
-export function Budget({   sx, value }: BudgetProps): React.JSX.Element {
+export function Requested({   sx, value }: RequestedProps): React.JSX.Element {
  
   return (
     <Card sx={sx}>

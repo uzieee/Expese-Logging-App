@@ -6,12 +6,12 @@ import Stack from '@mui/material/Stack';
 import type { SxProps } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 
-export interface TotalCustomersProps {
+export interface ApprovedProps {
   sx?: SxProps;
   value: string;
 }
 
-export function TotalCustomers({   sx, value }: TotalCustomersProps): React.JSX.Element {
+export function Approved({   sx, value }: ApprovedProps): React.JSX.Element {
  
   return (
     <Card sx={sx}>

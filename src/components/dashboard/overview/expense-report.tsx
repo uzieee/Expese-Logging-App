@@ -10,12 +10,12 @@ import type { ApexOptions } from 'apexcharts';
 
 import { Chart } from '@/components/core/chart';
 
-export interface SalesProps {
+export interface ExpenseReportProps {
   chartSeries: { name: string; data: number[] }[];
   sx?: SxProps;
 }
 
-export function Sales({ chartSeries, sx }: SalesProps): React.JSX.Element {
+export function ExpenseReport({ chartSeries, sx }: ExpenseReportProps): React.JSX.Element {
   const chartOptions = useChartOptions();
 
   return (
