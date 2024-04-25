@@ -31,27 +31,7 @@ const approvals = [
     view_and_approval: 'view',
     },
 
-  // {
-  //   id: 'USR-003',
-  //   employee_name: 'Username',
-  //   pending_expenses: '1Expense',
-  //   view_and_approval: 'view',
-  //   },
-  
-  //   {
-  //     id: 'USR-002',
-  //     employee_name: 'Username',
-  //     pending_expenses: '1Expense',
-  //     view_and_approval: 'view',
-  //     },
-
-  // {
-  //   id: 'USR-001',
-  //   employee_name: 'Username',
-  //   pending_expenses: '1Expense',
-  //   view_and_approval: 'view',
-  //   },
-
+ 
 ] satisfies Approval[];
 
 export default function Page(): React.JSX.Element {
@@ -63,22 +43,7 @@ export default function Page(): React.JSX.Element {
   return (
     <Stack spacing={3}>
       <Stack direction="row" spacing={3}>
-        {/* <Stack spacing={1} sx={{ flex: '1 1 auto' }}>
-          <Typography variant="h4">approvals</Typography>
-          <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
-            <Button color="inherit" startIcon={<UploadIcon fontSize="var(--icon-fontSize-md)" />}>
-              Import
-            </Button>
-            <Button color="inherit" startIcon={<DownloadIcon fontSize="var(--icon-fontSize-md)" />}>
-              Export
-            </Button>
-          </Stack>
-        </Stack> */}
-        <div>
-          
-        </div>
-      </Stack>
-      {/* <approvalsFilters /> */}
+         </Stack>
       <ApprovalTable
         count={paginatedapprovals.length}
         page={page}
@@ -87,8 +52,7 @@ export default function Page(): React.JSX.Element {
       />
       <div style={{ marginLeft: 'auto' }}>
     <Button startIcon={<PlusIcon fontSize="var(--icon-fontSize-md)" />} variant="contained">
-      {/* Button content */}
-    </Button>
+     </Button>
   </div>
       
     </Stack>
