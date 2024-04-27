@@ -12,18 +12,19 @@ import {
 
 // Fetch all expenses
 export const fetchExpenses = async () => {
-    try {
-      const expenseCollectionRef = collection(db, "addExpense");
-      const querySnapshot = await getDocs(expenseCollectionRef);
-      return querySnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data(),
-        date: new Date(doc.data().date * 1000) 
-      }));
-    } catch (error) {
-      throw new Error(`Failed to fetch expenses: ${(error as Error).message}`);
-    }
-  };
+  try {
+    const expenseCollectionRef = collection(db, "addExpense");
+    const querySnapshot = await getDocs(expenseCollectionRef);
+    return querySnapshot.docs.map(expenseDoc => ({
+      id: expenseDoc.id,
+      ...expenseDoc.data(),
+      date: new Date(expenseDoc.data().date * 1000)
+    }));
+  } catch (error) {
+    throw new Error(`Failed to fetch expenses: ${(error as Error).message}`);
+  }
+};
+
   
 // Add a new expense
 export const addExpense = async (expenseData: { category: string; amount: number; date: Date }) => {
