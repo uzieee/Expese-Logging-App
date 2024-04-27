@@ -22,7 +22,7 @@ export interface MobileNavProps {
 }
 
 export function MobileNav({ open, onClose }: MobileNavProps): React.JSX.Element {
-  const pathname = usePathname();
+  const pathname = usePathname() || '';
 
   return (
     <Drawer
@@ -52,18 +52,17 @@ export function MobileNav({ open, onClose }: MobileNavProps): React.JSX.Element 
       onClose={onClose}
       open={open}
     >
-       <Box component="nav" sx={{ flex: '1 1 auto', p: '12px' }}>
+      <Box component="nav" sx={{ flex: '1 1 auto', p: '12px' }}>
         {renderNavItems({ pathname, items: navItems })}
       </Box>
       <Divider sx={{ borderColor: 'var(--mui-palette-neutral-700)' }} />
-      
     </Drawer>
   );
 }
 
 function renderNavItems({ items = [], pathname }: { items?: NavItemConfig[]; pathname: string }): React.JSX.Element {
   const children = items.reduce((acc: React.ReactNode[], curr: NavItemConfig): React.ReactNode[] => {
-    const { key, ...item } = curr;
+    const { key,...item } = curr;
 
     acc.push(<NavItem key={key} pathname={pathname} {...item} />);
 
@@ -83,17 +82,17 @@ interface NavItemProps extends Omit<NavItemConfig, 'items'> {
 
 function NavItem({ disabled, external, href, icon, matcher, pathname, title }: NavItemProps): React.JSX.Element {
   const active = isNavItemActive({ disabled, external, href, matcher, pathname });
-  const Icon = icon ? navIcons[icon] : null;
+  const Icon = icon? navIcons[icon] : null;
 
   return (
     <li>
       <Box
         {...(href
-          ? {
-              component: external ? 'a' : RouterLink,
+         ? {
+              component: external? 'a' : RouterLink,
               href,
-              target: external ? '_blank' : undefined,
-              rel: external ? 'noreferrer' : undefined,
+              target: external? '_blank' : undefined,
+              rel: external? 'noreferrer' : undefined,
             }
           : { role: 'button' })}
         sx={{
@@ -108,20 +107,20 @@ function NavItem({ disabled, external, href, icon, matcher, pathname, title }: N
           position: 'relative',
           textDecoration: 'none',
           whiteSpace: 'nowrap',
-          ...(disabled && {
+         ...(disabled && {
             bgcolor: 'var(--NavItem-disabled-background)',
             color: 'var(--NavItem-disabled-color)',
             cursor: 'not-allowed',
           }),
-          ...(active && { bgcolor: 'var(--NavItem-active-background)', color: 'var(--NavItem-active-color)' }),
+         ...(active && { bgcolor: 'var(--NavItem-active-background)', color: 'var(--NavItem-active-color)' }),
         }}
       >
         <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'center', flex: '0 0 auto' }}>
-          {Icon ? (
+          {Icon? (
             <Icon
-              fill={active ? 'var(--NavItem-icon-active-color)' : 'var(--NavItem-icon-color)'}
+              fill={active? 'var(--NavItem-icon-active-color)' : 'var(--NavItem-icon-color)'}
               fontSize="var(--icon-fontSize-md)"
-              weight={active ? 'fill' : undefined}
+              weight={active? 'fill' : undefined}
             />
           ) : null}
         </Box>

@@ -16,22 +16,34 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 }
                 return res.status(200).json(docSnap.data());
             } catch (error) {
-                return res.status(500).json({ message: error.message });
+                if (error instanceof Error) {
+                    return res.status(500).json({ message: error.message });
+                } else {
+                    return res.status(500).json({ message: 'An unexpected error occurred' });
+                }
             }
         case 'PUT':
             try {
                 await updateDoc(docRef, req.body);
                 return res.status(200).json({ message: 'Employee updated successfully' });
             } catch (error) {
-                return res.status(500).json({ message: error.message });
+                if (error instanceof Error) {
+                    return res.status(500).json({ message: error.message });
+                } else {
+                    return res.status(500).json({ message: 'An unexpected error occurred' });
+                }
             }
-        case 'DELETE':
-            try {
-                await deleteDoc(docRef);
-                return res.status(200).json({ message: 'Employee deleted successfully' });
-            } catch (error) {
-                return res.status(500).json({ message: error.message });
-            }
+            case 'DELETE':
+                try {
+                    await deleteDoc(docRef);
+                    return res.status(200).json({ message: 'Employee deleted successfully' });
+                } catch (error) {
+                    if (error instanceof Error) {
+                        return res.status(500).json({ message: error.message });
+                    } else {
+                        return res.status(500).json({ message: 'An unexpected error occurred' });
+                    }
+                }
         default:
             res.setHeader('Allow', ['GET', 'PUT', 'DELETE']);
             return res.status(405).end(`Method ${req.method} Not Allowed`);
