@@ -65,9 +65,6 @@ const ExpenseApprovals: ExpenseApproval[] = [
     isApproved: true,
    
    },
-    
-
-  
 
 ];
 
