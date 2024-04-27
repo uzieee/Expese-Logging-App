@@ -3,7 +3,7 @@
 
 import * as React from 'react';
 import { TablePagination } from '@mui/material';
-import Alert, { AlertColor } from '@mui/material/Alert';
+import Alert, { type AlertColor } from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
@@ -50,38 +50,50 @@ export function ExpenseApprovalsTable({ count = 0, page = 0, rowsPerPage = 0 }: 
     // do nothing
   }
 
+  interface CustomError extends Error {
+    message: string;
+  }
+
   React.useEffect(() => {
-    const loadExpenses = async () => {
+  const loadExpenses = async () => {
+    try {
       const data: any = await fetchExpenses();
       setExpenses(data);
-    };
-    loadExpenses();
-  }, []);
-
-  const handleCloseSnackbar = () => {
-    setSnackbar({ ...snackbar, open: false });
-  };
-
-  const handleApprove = async (id: any) => {
-    try {
-      await approveExpense(id);
-      setExpenses(expenses.map((exp) => (exp.id === id ? { ...exp, isApproved: true } : exp)));
-      setSnackbar({ open: true, message: 'Expense approved successfully!', severity: 'success' });
-    } catch (error: any) {
-      setSnackbar({ open: true, message: error.message, severity: 'error' });
+    } catch (error) {
+      const typedError = error as CustomError;
+      console.error(typedError.message);
     }
   };
 
-  const handleReject = async (id: any) => {
-    try {
-      await rejectExpense(id);
-      setExpenses(expenses.map((exp) => (exp.id === id ? { ...exp, isApproved: false } : exp)));
-      setSnackbar({ open: true, message: 'Expense rejected successfully!', severity: 'success' });
-    } catch (error: any) {
-      setSnackbar({ open: true, message: error.message, severity: 'error' });
-    }
-  };
+  // handle the floating promise
+  void loadExpenses();
+}, []);
+  
 
+const handleApprove = async (id: string): Promise<void> => {
+  try {
+    await approveExpense(id);
+    setExpenses(expenses.map((exp) => (exp.id === id ? { ...exp, isApproved: true } : exp)));
+    setSnackbar({ open: true, message: 'Expense approved successfully!', severity: 'success' });
+  } catch (error) {
+    const typedError = error as CustomError;
+    setSnackbar({ open: true, message: typedError.message, severity: 'error' });
+  }
+};
+
+const handleReject = async (id: string): Promise<void> => {
+  try {
+    await rejectExpense(id);
+    setExpenses(expenses.map((exp) => (exp.id === id ? { ...exp, isApproved: false } : exp)));
+    setSnackbar({ open: true, message: 'Expense rejected successfully!', severity: 'success' });
+  } catch (error) {
+    const typedError = error as CustomError;
+    setSnackbar({ open: true, message: typedError.message, severity: 'error' });
+  }
+};
+function handleCloseSnackbar(): void {
+  setSnackbar({ open: false, message: '', severity: 'info' });
+}
   return (
     <Card>
       <Box sx={{ overflowX: 'auto', height: '500px' }}>

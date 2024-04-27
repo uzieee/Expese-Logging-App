@@ -10,6 +10,7 @@ import {
   doc
 } from "firebase/firestore";
 
+
 // Fetch all expenses
 export const fetchExpenses = async () => {
   try {
