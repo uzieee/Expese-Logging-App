@@ -77,12 +77,11 @@ export default function Page(): React.JSX.Element {
   return (
     <Stack spacing={3}>
       <Stack direction="row" spacing={3} />
-      <ExpenseApprovalsTable
-        count={paginatedCustomers.length}
-        page={page}
-        rows={paginatedCustomers}
-        rowsPerPage={rowsPerPage}
-      />
+          <ExpenseApprovalsTable
+          count={paginatedCustomers.length}
+          page={page}
+          rowsPerPage={rowsPerPage}
+        />
     </Stack>
   );
 }

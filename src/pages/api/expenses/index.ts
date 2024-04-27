@@ -1,11 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { fetchExpenses, addExpense, updateExpense, deleteExpense } from '../../../lib/firebase/expenseService';
+
+import { addExpense, deleteExpense, fetchExpenses, updateExpense } from '../../../lib/firebase/expense-service';
 
 // Handle API requests based on the method
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     switch (req.method) {
       case 'GET':

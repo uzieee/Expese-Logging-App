@@ -2,35 +2,34 @@
 'use client';
 
 import * as React from 'react';
+import { TablePagination } from '@mui/material';
+import Alert, { AlertColor } from '@mui/material/Alert';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import Divider from '@mui/material/Divider';
+import Snackbar from '@mui/material/Snackbar';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import Snackbar from '@mui/material/Snackbar';
-import Alert, { AlertColor } from '@mui/material/Alert';
 
-import { fetchExpenses, approveExpense, rejectExpense } from '@/lib/firebase/expenseService'; // Adjust path as needed
-import { TablePagination } from '@mui/material';
-
+import { approveExpense, fetchExpenses, rejectExpense } from '@/lib/firebase/expense-service'; // Adjust path as needed
 
 export interface ExpenseApproval {
   id: string;
   expenseType: string;
-  date: string; 
-  totalAmount: number; 
-  isApproved?: boolean; 
-} 
+  date: string;
+  totalAmount: number;
+  isApproved?: boolean;
+}
 
 interface Snack {
   open: boolean;
   message: string;
-  severity: AlertColor| undefined;
+  severity: AlertColor | undefined;
 }
 
 interface ExpenseProps {
@@ -39,31 +38,21 @@ interface ExpenseProps {
   rowsPerPage?: number;
 }
 
-
-
-
-export function ExpenseApprovalsTable( 
-  {
-    count = 0,
-    page = 0,
-    rowsPerPage = 0,
-  }: ExpenseProps
-): React.JSX.Element {
+export function ExpenseApprovalsTable({ count = 0, page = 0, rowsPerPage = 0 }: ExpenseProps): React.JSX.Element {
   const [expenses, setExpenses] = React.useState([] as ExpenseApproval[]);
   const [snackbar, setSnackbar] = React.useState<Snack>({
     open: false,
     message: '',
-    severity: 'info'
+    severity: 'info',
   });
 
   function noop(): void {
     // do nothing
   }
-  
 
   React.useEffect(() => {
     const loadExpenses = async () => {
-      const data:any = await fetchExpenses();
+      const data: any = await fetchExpenses();
       setExpenses(data);
     };
     loadExpenses();
@@ -73,22 +62,22 @@ export function ExpenseApprovalsTable(
     setSnackbar({ ...snackbar, open: false });
   };
 
-  const handleApprove = async (id:any) => {
+  const handleApprove = async (id: any) => {
     try {
       await approveExpense(id);
-      setExpenses(expenses.map(exp => exp.id === id ? { ...exp, isApproved: true } : exp));
+      setExpenses(expenses.map((exp) => (exp.id === id ? { ...exp, isApproved: true } : exp)));
       setSnackbar({ open: true, message: 'Expense approved successfully!', severity: 'success' });
-    } catch (error:any) {
+    } catch (error: any) {
       setSnackbar({ open: true, message: error.message, severity: 'error' });
     }
   };
 
-  const handleReject = async (id:any) => {
+  const handleReject = async (id: any) => {
     try {
       await rejectExpense(id);
-      setExpenses(expenses.map(exp => exp.id === id ? { ...exp, isApproved: false } : exp));
+      setExpenses(expenses.map((exp) => (exp.id === id ? { ...exp, isApproved: false } : exp)));
       setSnackbar({ open: true, message: 'Expense rejected successfully!', severity: 'success' });
-    } catch (error:any) {
+    } catch (error: any) {
       setSnackbar({ open: true, message: error.message, severity: 'error' });
     }
   };
@@ -116,8 +105,16 @@ export function ExpenseApprovalsTable(
                 <TableCell>{new Date(expense.date).toLocaleDateString()}</TableCell>
                 <TableCell>${expense.totalAmount}</TableCell>
                 <TableCell>
-                  <Button onClick={() => handleApprove(expense.id)} style={{ backgroundColor: 'light-green' }} color="success">Approve</Button>
-                  <Button onClick={() => handleReject(expense.id)} color="error">Reject</Button>
+                  <Button
+                    onClick={() => handleApprove(expense.id)}
+                    style={{ backgroundColor: 'light-green' }}
+                    color="success"
+                  >
+                    Approve
+                  </Button>
+                  <Button onClick={() => handleReject(expense.id)} color="error">
+                    Reject
+                  </Button>
                 </TableCell>
               </TableRow>
             ))}

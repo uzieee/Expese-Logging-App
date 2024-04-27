@@ -37,15 +37,23 @@ export function UserProvider({ children }: UserProviderProps): React.JSX.Element
       }
 
       setState((prev) => ({ ...prev, user: data ?? null, error: null, isLoading: false }));
-    } catch (err) {
-      logger.error(err);
+    } catch (err: unknown) { // Change err to type unknown
+      if (err instanceof Error) { // Check if err is an instance of Error before logging
+        logger.error(err.message);
+      } else {
+        logger.error('An unexpected error occurred');
+      }
       setState((prev) => ({ ...prev, user: null, error: 'Something went wrong', isLoading: false }));
     }
   }, []);
 
   React.useEffect(() => {
-    checkSession().catch((err) => {
-      logger.error(err);
+    checkSession().catch((err: unknown) => { // Ensure to catch with type unknown
+      if (err instanceof Error) {
+        logger.error(err.message);
+      } else {
+        logger.error('An unexpected error occurred');
+      }
       // noop
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps -- Expected

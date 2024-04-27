@@ -54,7 +54,7 @@ function useChartOptions(): ApexOptions {
     },
     yaxis: {
       labels: {
-        formatter: (value) => (value > 0 ? `${value}K` : `${value}`),
+        formatter: (value: number) => `${value.toFixed(0)}K`, // Converts number to string with 'K' appended
         offsetX: -10,
         style: { colors: theme.palette.text.secondary },
       },
