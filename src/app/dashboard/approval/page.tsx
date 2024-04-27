@@ -11,20 +11,62 @@ const ExpenseApprovals = [
   
   {
     id: 'USR-001',
-    employee_name: 'Username',
-    expense_detail: 'Vehicle ',
-    created: '14-02-2024',
-    amount: '$50',
-    action: 'Approve / Reject',
+    expenseType: 'Username',
+    date: '14-02-2024',
+    totalAmount: 50,
+    isApproved: true,
+   
    },
-  {
+   {
     id: 'USR-002',
-    employee_name: 'Username',
-    expense_detail: 'Vehicle ',
-    created: '14-02-2024',
-    amount: '$50',
-    action: 'Approve / Reject',
-  },
+    expenseType: 'Username',
+    date: '14-02-2024',
+    totalAmount: 50,
+    isApproved: true,
+   
+   },
+   {
+    id: 'USR-002',
+    expenseType: 'Username',
+    date: '14-02-2024',
+    totalAmount: 50,
+    isApproved: true,
+   
+   },
+   {
+    id: 'USR-002',
+    expenseType: 'Username',
+    date: '14-02-2024',
+    totalAmount: 50,
+    isApproved: true,
+   
+   },
+   {
+    id: 'USR-002',
+    expenseType: 'Username',
+    date: '14-02-2024',
+    totalAmount: 50,
+    isApproved: true,
+   
+   },
+   {
+    id: 'USR-002',
+    expenseType: 'Username',
+    date: '14-02-2024',
+    totalAmount: 50,
+    isApproved: true,
+   
+   },
+   {
+    id: 'USR-002',
+    expenseType: 'Username',
+    date: '14-02-2024',
+    totalAmount: 50,
+    isApproved: true,
+   
+   },
+    
+
   
 
 ] satisfies ExpenseApproval[];

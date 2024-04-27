@@ -20,13 +20,13 @@ export function UpdatePasswordForm(): React.JSX.Element {
       }}
     >
       <Card>
-        <CardHeader subheader="Update password" title="Password" />
+        <CardHeader subheader="Update password" title="Change Password" />
         <Divider />
         <CardContent>
           <Stack spacing={3} sx={{ maxWidth: 'sm' }}>
             <FormControl fullWidth>
-              <InputLabel>Password</InputLabel>
-              <OutlinedInput label="Password" name="password" type="password" />
+              <InputLabel>New Password</InputLabel>
+              <OutlinedInput label="New Password" name="password" type="password" />
             </FormControl>
             <FormControl fullWidth>
               <InputLabel>Confirm password</InputLabel>

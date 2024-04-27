@@ -14,21 +14,60 @@ import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
-import Alert from '@mui/material/Alert';
+import Alert, { AlertColor } from '@mui/material/Alert';
 
 import { fetchExpenses, approveExpense, rejectExpense } from '@/lib/firebase/expenseService'; // Adjust path as needed
+import { any } from 'zod';
+import { TablePagination } from '@mui/material';
 
-export function ExpenseApprovalsTable(): React.JSX.Element {
-  const [expenses, setExpenses] = React.useState([]);
-  const [snackbar, setSnackbar] = React.useState({
+
+export interface ExpenseApproval {
+  id: string;
+  expenseType: string;
+  date: string; 
+  totalAmount: number; 
+  isApproved?: boolean; 
+} 
+
+interface Snack {
+  open: boolean;
+  message: string;
+  severity: AlertColor| undefined;
+}
+
+interface ExpenseProps {
+  count?: number;
+  page?: number;
+  rows?: ExpenseApproval[];
+  rowsPerPage?: number;
+}
+
+
+
+
+export function ExpenseApprovalsTable( 
+  {
+    count = 0,
+    rows = [],
+    page = 0,
+    rowsPerPage = 0,
+  }: ExpenseProps
+): React.JSX.Element {
+  const [expenses, setExpenses] = React.useState([] as ExpenseApproval[]);
+  const [snackbar, setSnackbar] = React.useState<Snack>({
     open: false,
     message: '',
     severity: 'info'
   });
 
+  function noop(): void {
+    // do nothing
+  }
+  
+
   React.useEffect(() => {
     const loadExpenses = async () => {
-      const data = await fetchExpenses();
+      const data:any = await fetchExpenses();
       setExpenses(data);
     };
     loadExpenses();
@@ -38,22 +77,22 @@ export function ExpenseApprovalsTable(): React.JSX.Element {
     setSnackbar({ ...snackbar, open: false });
   };
 
-  const handleApprove = async (id) => {
+  const handleApprove = async (id:any) => {
     try {
       await approveExpense(id);
       setExpenses(expenses.map(exp => exp.id === id ? { ...exp, isApproved: true } : exp));
       setSnackbar({ open: true, message: 'Expense approved successfully!', severity: 'success' });
-    } catch (error) {
+    } catch (error:any) {
       setSnackbar({ open: true, message: error.message, severity: 'error' });
     }
   };
 
-  const handleReject = async (id) => {
+  const handleReject = async (id:any) => {
     try {
       await rejectExpense(id);
       setExpenses(expenses.map(exp => exp.id === id ? { ...exp, isApproved: false } : exp));
       setSnackbar({ open: true, message: 'Expense rejected successfully!', severity: 'success' });
-    } catch (error) {
+    } catch (error:any) {
       setSnackbar({ open: true, message: error.message, severity: 'error' });
     }
   };
@@ -95,6 +134,16 @@ export function ExpenseApprovalsTable(): React.JSX.Element {
           {snackbar.message}
         </Alert>
       </Snackbar>
+
+      <TablePagination
+        component="div"
+        count={count}
+        onPageChange={noop}
+        onRowsPerPageChange={noop}
+        page={page}
+        rowsPerPage={rowsPerPage}
+        rowsPerPageOptions={[5, 10, 25]}
+      />
     </Card>
   );
 }

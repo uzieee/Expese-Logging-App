@@ -27,7 +27,7 @@ export function Approved({   sx, value }: ApprovedProps): React.JSX.Element {
               <Typography color="text.secondary" variant="overline">
                 Approved
               </Typography>
-              <Typography variant="h4">{value}</Typography>
+              <Typography fontSize='1.78rem'>{value}</Typography>
             </Stack>
             
           </Stack>

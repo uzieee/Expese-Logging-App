@@ -24,9 +24,9 @@ export function Requested({   sx, value }: RequestedProps): React.JSX.Element {
             </Avatar>
             <Stack spacing={1}>
               <Typography color="text.secondary" variant="overline">
-              Requested
+              Total Expense
               </Typography>
-              <Typography variant="h4">{value}</Typography>
+              <Typography fontSize='1.78rem'>{value}</Typography>
             </Stack>
             
           </Stack>

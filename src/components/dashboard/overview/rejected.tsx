@@ -24,7 +24,7 @@ export function Rejected({ value, sx }: RejectedProps): React.JSX.Element {
             <Typography color="text.secondary" variant="overline">
              Rejected
             </Typography>
-            <Typography variant="h4">{value}</Typography>
+            <Typography fontSize='1.78rem'>{value}</Typography>
           </Stack>
           
         </Stack>

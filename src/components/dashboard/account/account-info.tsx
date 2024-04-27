@@ -37,11 +37,11 @@ export function AccountInfo(): React.JSX.Element {
         </Stack>
       </CardContent>
       <Divider />
-      <CardActions>
+      {/* <CardActions>
         <Button fullWidth variant="text">
           Upload picture
         </Button>
-      </CardActions>
+      </CardActions> */}
     </Card>
   );
 }

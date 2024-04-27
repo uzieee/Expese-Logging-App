@@ -77,6 +77,7 @@ export function AllEmployeesTable({
                   </TableRow>
               );
             })}
+            
           </TableBody>
         </Table>
       </Box>

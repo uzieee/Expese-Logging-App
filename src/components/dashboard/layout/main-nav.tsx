@@ -48,7 +48,7 @@ export function MainNav(): React.JSX.Element {
           </Stack>
           <Stack sx={{ alignItems: 'center' }} direction="row" spacing={2}>
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-      <Tooltip title="Notifications">
+      <Tooltip title="Calender">
           <IconButton>
           <img src="/assets/calendar-dots.svg" alt="Calendar Dots" style={{ width: '24px', height: '24px' }} />
           </IconButton>

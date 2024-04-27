@@ -9,17 +9,9 @@ import CardHeader from '@mui/material/CardHeader';
 import Divider from '@mui/material/Divider';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import Select from '@mui/material/Select';
 import Grid from '@mui/material/Unstable_Grid2';
 
-const states = [
-  { value: 'punjab', label: 'Punjab' },
-  { value: 'sindh', label: 'Sindh' },
-  { value: 'islamabad', label: 'Islamabad' },
-  { value: 'balochistan', label: 'Balochistan' },
-] as const;
 
 export function AccountDetailsForm(): React.JSX.Element {
   return (
@@ -51,30 +43,9 @@ export function AccountDetailsForm(): React.JSX.Element {
                 <OutlinedInput defaultValue="usmanshafique4342@gmail.com" label="Email address" name="email" />
               </FormControl>
             </Grid>
-            <Grid md={6} xs={12}>
-              <FormControl fullWidth>
-                <InputLabel>Phone number</InputLabel>
-                <OutlinedInput label="Phone number" name="phone" type="tel" />
-              </FormControl>
-            </Grid>
-            <Grid md={6} xs={12}>
-              <FormControl fullWidth>
-                <InputLabel>State</InputLabel>
-                <Select defaultValue="Islamabad" label="State" name="state" variant="outlined">
-                  {states.map((option) => (
-                    <MenuItem key={option.value} value={option.value}>
-                      {option.label}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </Grid>
-            <Grid md={6} xs={12}>
-              <FormControl fullWidth>
-                <InputLabel>City</InputLabel>
-                <OutlinedInput label="City" />
-              </FormControl>
-            </Grid>
+            
+            
+            
           </Grid>
         </CardContent>
         <Divider />

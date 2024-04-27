@@ -85,9 +85,9 @@ export default function Page(): React.JSX.Element {
   return (
 
     <Grid container spacing={3}>
-      <Grid lg={3} sm={6} xs={12}>
+       <Grid lg={3} sm={6} xs={12}>
         <Requested  sx={{ height: '100%' }} value="$12000" />
-      </Grid>
+      </Grid> 
       <Grid lg={3} sm={6} xs={12}>
         <Approved  sx={{ height: '100%' }} value="$12000" />
       </Grid>
@@ -95,7 +95,7 @@ export default function Page(): React.JSX.Element {
         <Rejected sx={{ height: '100%' }} value="$12000" />
       </Grid>
       <Grid lg={8} xs={12}>
-        <Typography variant="h4" sx={{  marginBottom: 2 }}>Expense Report</Typography>
+        <Typography fontSize={'1.85rem'} sx={{  marginBottom: 2 , color: '#333' }}>Expense Report</Typography>
           <ExpenseReport
           chartSeries={[
             { name: 'This year', data: [ 1, 1.5, 1, 2, 2.5, 4, 3 , 3.5] },
@@ -105,13 +105,13 @@ export default function Page(): React.JSX.Element {
       </Grid>
       
       <Grid lg={4} md={6} xs={12}>
-      <Typography variant="h4" sx={{  marginBottom: 2 }}>Expense by Categories</Typography>
+      <Typography fontSize={'1.85rem'} sx={{  marginBottom: 2 }}>Expense by Categories</Typography>
           
       
         <ExpensebyCategory chartSeries={[31, 18, 17 , ]} labels={['Rent', 'Vehicle', 'Flat']} sx={{ height: '100%' }} />
       </Grid>
       <Grid lg={12} md={6} xs={12}> 
-      <Typography variant="h4" sx={{ marginTop: 5 , marginBottom: 2 }}>Recent Transactions</Typography>
+      <Typography fontSize={'1.85rem'} sx={{ marginTop: 5 , marginBottom: 2 }}>Recent Transactions</Typography>
        
       <RecentTransactionsTable
         count={paginatedRecentTransactions.length}
