@@ -5,7 +5,6 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Divider from '@mui/material/Divider';
-import Stack from '@mui/material/Stack';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -17,7 +16,6 @@ import Snackbar from '@mui/material/Snackbar';
 import Alert, { AlertColor } from '@mui/material/Alert';
 
 import { fetchExpenses, approveExpense, rejectExpense } from '@/lib/firebase/expenseService'; // Adjust path as needed
-import { any } from 'zod';
 import { TablePagination } from '@mui/material';
 
 
@@ -38,7 +36,6 @@ interface Snack {
 interface ExpenseProps {
   count?: number;
   page?: number;
-  rows?: ExpenseApproval[];
   rowsPerPage?: number;
 }
 
@@ -48,7 +45,6 @@ interface ExpenseProps {
 export function ExpenseApprovalsTable( 
   {
     count = 0,
-    rows = [],
     page = 0,
     rowsPerPage = 0,
   }: ExpenseProps
