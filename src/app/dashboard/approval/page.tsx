@@ -1,13 +1,13 @@
 import * as React from 'react';
 import type { Metadata } from 'next';
 import Stack from '@mui/material/Stack';
-
 import { config } from '@/config';
-import { ExpenseApproval, ExpenseApprovalsTable } from '@/components/dashboard/approval/approval-table';
+import type { ExpenseApproval } from '@/components/dashboard/approval/approval-table'; // Adjusted for type-only import
+import { ExpenseApprovalsTable } from '@/components/dashboard/approval/approval-table';
 
 export const metadata = { title: `Approval | Dashboard | ${config.site.name}` } satisfies Metadata;
 
-const ExpenseApprovals = [
+const ExpenseApprovals: ExpenseApproval[] = [
   
   {
     id: 'USR-001',
@@ -69,7 +69,7 @@ const ExpenseApprovals = [
 
   
 
-] satisfies ExpenseApproval[];
+];
 
 export default function Page(): React.JSX.Element {
   const page = 0;
@@ -79,9 +79,7 @@ export default function Page(): React.JSX.Element {
 
   return (
     <Stack spacing={3}>
-      <Stack direction="row" spacing={3}>
-        
-      </Stack>
+      <Stack direction="row" spacing={3} />
       <ExpenseApprovalsTable
         count={paginatedCustomers.length}
         page={page}
