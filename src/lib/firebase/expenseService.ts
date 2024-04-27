@@ -21,43 +21,44 @@ export const fetchExpenses = async () => {
         date: new Date(doc.data().date * 1000) 
       }));
     } catch (error) {
-      throw new Error(`Failed to fetch expenses: ${error.message}`);
+      throw new Error(`Failed to fetch expenses: ${(error as Error).message}`);
     }
   };
   
 // Add a new expense
-export const addExpense = async (expenseData) => {
+export const addExpense = async (expenseData: { category: string; amount: number; date: Date }) => {
     try {
       const expenseCollectionRef = collection(db, "addExpense");
       const docRef = await addDoc(expenseCollectionRef, expenseData);
       return docRef.id;
     } catch (error) {
-      throw new Error(`Failed to add expense: ${error.message}`);
+      throw new Error(`Failed to add expense: ${(error as Error).message}`);
     }
   };
+
   
   // Update an existing expense
-  export const updateExpense = async (id, expenseData) => {
+  export const updateExpense = async (id: string, expenseData: { category: string; amount: number; date: Date }) => {
     try {
       const expenseDocRef = doc(db, "addExpense", id);
       await updateDoc(expenseDocRef, expenseData);
     } catch (error) {
-      throw new Error(`Failed to update expense: ${error.message}`);
+      throw new Error(`Failed to update expense: ${(error as Error).message}`);
     }
   };
   
   // Delete an expense
-  export const deleteExpense = async (id) => {
+  export const deleteExpense = async (id: string) => {
     try {
       const expenseDocRef = doc(db, "addExpense", id);
       await deleteDoc(expenseDocRef);
     } catch (error) {
-      throw new Error(`Failed to delete expense: ${error.message}`);
+      throw new Error(`Failed to delete expense: ${(error as Error).message}`);
     }
   };
 
 // Approve an expense
-export const approveExpense = async (id) => {
+export const approveExpense = async (id: string) => {
     const expenseDocRef = doc(db, "addExpense", id);
     const docSnap = await getDoc(expenseDocRef);
   
@@ -69,7 +70,7 @@ export const approveExpense = async (id) => {
   };
   
  // Reject an expense
-export const rejectExpense = async (id) => {
+ export const rejectExpense = async (id: string) => {
     const expenseDocRef = doc(db, "addExpense", id);
     const docSnap = await getDoc(expenseDocRef);
   
